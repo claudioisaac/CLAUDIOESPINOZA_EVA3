@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2 - Comparación de Nombres</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+    <div class="formulario">
+        <h2>Comparación de Nombres</h2>
+        <form method="POST">
+            <label>Nombre 1:</label>
+            <input type="text" name="nombre1" required>
+            <label>Nombre 2:</label>
+            <input type="text" name="nombre2" required>
+            <label>Nombre 3:</label>
+            <input type="text" name="nombre3" required>
+            <button type="submit" class="boton">Enviar</button>
+        </form>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if cantidad is not none %}
+            <div class="resultado">
+                {% if empate %}
+                    <p>¡Existe un empate entre los nombres!</p>
+                {% endif %}
+                <p>El nombre con mayor caracteres es: {{ nombre_mayor }}</p>
+                <p>El nombre tiene: {{ cantidad }} caracteres</p>
+            </div>
+        {% endif %}
+        <a href="/" class="volver">Volver al menú principal</a>
+    </div>
+</body>
+</html>
